@@ -1,0 +1,16 @@
+
+<http://gareus.org/oss/lv2/@LV2NAME@>
+    modgui:gui [
+        modgui:resourcesDirectory <modgui> ;
+        modgui:iconTemplate <modgui/icon-@LV2NAME@.html> ;
+        modgui:stylesheet <modgui/stylesheet-@LV2NAME@.css> ;
+        modgui:screenshot <modgui/screenshot-@LV2NAME@.png> ;
+        modgui:thumbnail <modgui/thumbnail-@LV2NAME@.png> ;
+        modgui:brand "x42" ;
+        modgui:label "MIDI Clock" ;
+        modgui:port [
+            lv2:index 0 ;
+            lv2:symbol "mode" ;
+            lv2:name "Mode" ;
+        ] ;
+    ] .

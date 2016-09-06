@@ -102,7 +102,7 @@ $(BUILDDIR)$(LV2NAME)$(LIB_EXT): src/$(LV2NAME).c
 	  -shared $(LV2LDFLAGS) $(LDFLAGS) $(LOADLIBES)
 	$(STRIP) $(STRIPFLAGS) $(BUILDDIR)$(LV2NAME)$(LIB_EXT)
 
-$(BUILDDIR)modgui:
+$(BUILDDIR)modgui: modgui/
 	@mkdir -p $(BUILDDIR)/modgui
 	cp -r modgui/* $(BUILDDIR)modgui/
 
