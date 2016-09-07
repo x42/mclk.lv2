@@ -49,15 +49,15 @@
 		a lv2:InputPort, lv2:ControlPort;
 		lv2:index 2;
 		lv2:symbol "mode";
-		lv2:name "Mode";
+		lv2:name "Generator Mode";
 		lv2:minimum 0;
 		lv2:default 3;
 		lv2:maximum 3;
 		lv2:portProperty lv2:integer, lv2:enumeration;
-		lv2:scalePoint [ rdf:value 0 ; rdfs:label "Start/Stop only"; ] ;
-		lv2:scalePoint [ rdf:value 1 ; rdfs:label "MIDI Clock only"; ] ;
+		lv2:scalePoint [ rdf:value 0 ; rdfs:label "Start/Stop Only"; ] ;
+		lv2:scalePoint [ rdf:value 1 ; rdfs:label "MIDI Clock Only"; ] ;
 		lv2:scalePoint [ rdf:value 2 ; rdfs:label "Clock + Start/Stop"; ] ;
-		lv2:scalePoint [ rdf:value 3 ; rdfs:label "Clock + Transp + Pos"; ] ;
+		lv2:scalePoint [ rdf:value 3 ; rdfs:label "Clock + Transport + Position"; ] ;
 	] , [
 		a lv2:InputPort, lv2:ControlPort;
 		lv2:index 3;
@@ -78,7 +78,7 @@
 		lv2:default 120.0;
 		lv2:maximum 208.0;
 		units:unit units:bpm;
-		rdfs:comment "'Free Run' mode speed.";
+		rdfs:comment "'Free Run' speed.";
 	] , [
 		a lv2:InputPort, lv2:ControlPort;
 		lv2:index 5;
@@ -100,7 +100,7 @@
 		lv2:default 0;
 		lv2:maximum 1;
 		lv2:portProperty lv2:integer, lv2:toggled, pprop:trigger;
-		rdfs:comment "Reset Song Position to the beginning. This produces a 'start' rather than 'continue' message at play. Only available in 'Free Run' mode. ";
+		rdfs:comment "Reset Song-Position to the beginning. This produces a 'start' rather than 'continue' message at play. This control is only relevant in 'Free Run' mode. ";
 	] , [
 		a lv2:OutputPort, lv2:ControlPort ;
 		lv2:index 7;

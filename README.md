@@ -1,7 +1,12 @@
 mclk.lv2 - Midi Clock Generator
 ===============================
 
-mclk.lv2 is simple test-sequence generator.
+mclk.lv2 is MIDI Clock and MIDI realtime-message generator.
+It can run freely with dedicated BPM, start/stop/continue controls
+or generate MIDI Clock using host-provided musical time.
+
+mclk.lv2 supports Transport, Song-Position and MIDI Clock and
+allows to only generate a subset.
 
 Install
 -------
