@@ -57,7 +57,7 @@
 		lv2:scalePoint [ rdf:value 0 ; rdfs:label "Start/Stop Only"; ] ;
 		lv2:scalePoint [ rdf:value 1 ; rdfs:label "MIDI Clock Only"; ] ;
 		lv2:scalePoint [ rdf:value 2 ; rdfs:label "Clock + Start/Stop"; ] ;
-		lv2:scalePoint [ rdf:value 3 ; rdfs:label "Clock + Transport + Position"; ] ;
+		lv2:scalePoint [ rdf:value 3 ; rdfs:label "Clock + Transport + Pos"; ] ;
 	] , [
 		a lv2:InputPort, lv2:ControlPort;
 		lv2:index 3;
@@ -79,6 +79,7 @@
 		lv2:maximum 208.0;
 		units:unit units:bpm;
 		rdfs:comment "'Free Run' speed.";
+		pprop:rangeSteps 169;
 	] , [
 		a lv2:InputPort, lv2:ControlPort;
 		lv2:index 5;
@@ -121,6 +122,33 @@
 		lv2:maximum 16384;
 		lv2:portProperty pprop:notOnGUI ;
 		lv2:scalePoint [ rdfs:label "N/A"; rdf:value -1 ; ] ;
+		units:unit units:beat;
+	] , [
+		a lv2:OutputPort, lv2:ControlPort ;
+		lv2:index 9;
+		lv2:symbol "bbt_bar";
+		lv2:name "BBT Bar";
+		lv2:minimum 1;
+		lv2:maximum 16384;
+		lv2:portProperty pprop:notOnGUI ;
+		units:unit units:bar;
+	] , [
+		a lv2:OutputPort, lv2:ControlPort ;
+		lv2:index 10;
+		lv2:symbol "bbt_beat";
+		lv2:name "BBT Beat";
+		lv2:minimum 1;
+		lv2:maximum 16;
+		lv2:portProperty pprop:notOnGUI ;
+		units:unit units:beat;
+	] , [
+		a lv2:OutputPort, lv2:ControlPort ;
+		lv2:index 11;
+		lv2:symbol "bbt_tick";
+		lv2:name "BBT Tick";
+		lv2:minimum 0;
+		lv2:maximum 960;
+		lv2:portProperty pprop:notOnGUI ;
 		units:unit units:beat;
 	]
 	.

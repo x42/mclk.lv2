@@ -17,17 +17,39 @@
         {{/controls.0}}
     </div>
 
+    <div class="mod-bbt-group clearfix">
+        <div>
+            <span class="bbt" mod-role="bbt_bar">00</span>
+            <span>|</span>
+            <span class="bbt" mod-role="bbt_beat">00</span>
+            <span>|</span>
+            <span class="bbt" mod-role="bbt_tick">00</span>
+        </div>
+    </div>
+
     <div class="mod-control-group clearfix">
-			<div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="bpm"></div>
-			<span class="mod-knob-right-title">BPM</span>
-			<div class="mod-knob-value" contenteditable="true" mod-role="input-control-value" mod-port-symbol="bpm"></div>
-		</div>
+        <div class="mod-sync-knob" title="Host Sync">
+            <div class="mod-togglebutton off" mod-widget="switch" mod-role="input-control-port" mod-port-symbol="sync"></div>
+            <span class="mod-knob-title-on">Host Sync</span>
+            <span class="mod-knob-title-off">Free Running</span>
+        </div>
+    </div>
 
-		<div class="mod-control-group clearfix led-group">
-			<div mod-port-symbol="transport" mod-role="input-control-port" class="x42-led on"></div>
-		</div>
+    <div class="mod-control-group clearfix" mod-role="bpm-control">
+        <div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="bpm"></div>
+        <div class="mod-knob-value" contenteditable="true" mod-role="input-control-value" mod-port-symbol="bpm"></div>
+    </div>
 
-		<div class="mod-control-group clearfix bottom-group">
+    <div class="mod-control-group clearfix insensitive" mod-role="bpm-display">
+        <div class="mod-knob-image host-sync"></div>
+        <div class="mod-knob-value" mod-role="bpm-value">XXX.XX</div>
+    </div>
+
+    <div class="mod-control-group clearfix led-group">
+        <div mod-port-symbol="transport" mod-role="input-control-port" class="x42-led on"></div>
+    </div>
+
+    <div class="mod-control-group clearfix bottom-group">
         <div class="mod-knob" title="Play/Pause in 'Free Run' mode (start/stop/continue)">
             <div class="mod-pushbutton off" mod-widget="switch" mod-role="input-control-port" mod-port-symbol="transport"></div>
             <span class="mod-knob-title">Play</span>

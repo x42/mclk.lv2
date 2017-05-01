@@ -6,8 +6,10 @@
         modgui:stylesheet <modgui/stylesheet-@LV2NAME@.css> ;
         modgui:screenshot <modgui/screenshot-@LV2NAME@.png> ;
         modgui:thumbnail <modgui/thumbnail-@LV2NAME@.png> ;
+        modgui:javascript <modgui/script-@LV2NAME@.js> ;
         modgui:brand "x42" ;
         modgui:label "MIDI Clock" ;
+        modgui:monitoredOutputs  [ lv2:symbol "hostbpm" ] , [ lv2:symbol "bbt_bar" ] , [ lv2:symbol "bbt_beat" ] , [ lv2:symbol "bbt_tick" ];
         modgui:port [
             lv2:index 0 ;
             lv2:symbol "mode" ;

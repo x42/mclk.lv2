@@ -76,6 +76,7 @@ typedef struct {
 	float* p_rewind;
 	float* p_hostbpm;
 	float* p_songpos;
+	float* p_bbt[3];
 
 	/* Cached Ports */
 	float c_mode;
@@ -343,6 +344,15 @@ connect_port (LV2_Handle instance,
 		case 8:
 			self->p_songpos = (float*)data;
 			break;
+		case 9:
+			self->p_bbt[0] = (float*)data;
+			break;
+		case 10:
+			self->p_bbt[1] = (float*)data;
+			break;
+		case 11:
+			self->p_bbt[2] = (float*)data;
+			break;
 		default:
 			break;
 	}
@@ -511,6 +521,14 @@ run (LV2_Handle instance, uint32_t n_samples)
 
 noroll:
 	*self->p_songpos = bb;
+
+	int bpb = 4;
+	if (self->host_info && *self->p_sync > 0) {
+		bpb = self->host_div;
+	}
+	*self->p_bbt[0] = 1.f + floor (bb / bpb);
+	*self->p_bbt[1] = 1.f + ((int) floor (bb) % bpb);
+	*self->p_bbt[2] = floor (fmod (bb, 1.f) * 960.f);
 
 	/* keep track of host position.. */
 	if (self->host_info) {

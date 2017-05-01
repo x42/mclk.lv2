@@ -30,17 +30,17 @@
     position:absolute;
     right:0;
     text-align:center;
-    top:185px;
+    bottom:115px;
 }
 
 .x42-mclk{{{cns}}} .x42-brand h1 {
-    border-radius:12px;
-    border-style:solid;
-    border-width:4px;
+    border: none;
     display:inline-block;
     font-family:"Nexa";
-    font-size:32px;
-    padding:3px 9px 0;
+    font-size:22px;
+    padding:0;
+    margin:0;
+    text-shadow: -1px -1px 1px #aaa;
 }
 
 .x42-mclk{{{cns}}} .x42-plugin-name {
@@ -58,25 +58,29 @@
     line-height:1;
 }
 
-/* = LIGHT ON/OFF
-================================================ */
-.x42-mclk{{{cns}}} .mod-light {
-    background-position:center center;
-    background-repeat:no-repeat;
-    height:32px;
-    left:10px;
-    position:absolute;
-    right:10px;
-    top:235px;
-}
-
-/* = KNOBS
+/* = Controls
 ================================================ */
 .x42-mclk{{{cns}}} .mod-control-group {
-    margin:10px !important;
+    margin:5px 10px!important;
     position:relative;
     text-align:center;
     z-index:30;
+}
+
+.x42-mclk{{{cns}}} .mod-bbt-group {
+    background-color:#ccaa66;
+    margin:5px 40px 5px 40px !important;
+    position:relative;
+    text-align:center;
+    z-index:30;
+    color:black;
+    box-shadow: 2px 2px 2px 0px #000 inset, -1px -1px 1px 1px #888 inset;
+}
+
+.x42-mclk{{{cns}}} .mod-bbt-group div {
+    padding: 4px 0 2px 0;
+    line-height:1.5em;
+    vertical-align:middle;
 }
 
 .x42-mclk{{{cns}}} .mod-control-group .mod-knob {
@@ -113,6 +117,55 @@
     margin:4px auto 0 auto;
 }
 
+.x42-mclk{{{cns}}} .mod-control-group .mod-knob-image.host-sync {
+    background-image:url(/resources/sync.png{{{ns}}});
+    background-repeat:no-repeat;
+    height:60px;
+    width:88px;
+    margin:0 auto;
+    margin:4px auto 0 auto;
+}
+
+.x42-mclk{{{cns}}} .mod-control-group.insensitive {
+    display:none;
+}
+
+.x42-mclk{{{cns}}} .mod-control-group .mod-sync-knob {
+    overflow:hidden;
+    position:relative;
+    display:inline-block;
+    height:74px;
+    margin: 0 14px;
+}
+
+.x42-mclk{{{cns}}} .mod-control-group .mod-sync-knob > span.mod-knob-title-on,
+.x42-mclk{{{cns}}} .mod-control-group .mod-sync-knob > span.mod-knob-title-off
+{
+    display:block;
+    font-size:11px;
+    font-weight:bold;
+    height:12px;
+    left:0;
+    line-height:1;
+    margin:0;
+    overflow:hidden;
+    padding:0;
+    position:absolute;
+    right:0;
+    text-transform:uppercase;
+}
+
+.x42-mclk{{{cns}}} .mod-control-group .mod-sync-knob > span.mod-knob-title-on
+{
+    top:0px;
+}
+
+.x42-mclk{{{cns}}} .mod-control-group .mod-sync-knob > span.mod-knob-title-off
+{
+    bottom:0px;
+}
+
+
 .x42-mclk{{{cns}}} .led-group {
     margin:10px auto 0 auto;
     left:10px;
@@ -129,8 +182,23 @@
     bottom:70px;
 }
 
-/* = Push Buttons
-================================================ */
+
+.x42-mclk{{{cns}}} .mod-togglebutton {
+    background-image:url(/resources/switch.png{{{ns}}});
+    background-position:bottom center;
+    background-repeat:no-repeat;
+    background-size:auto 128px;
+    cursor:pointer;
+    height:64px;
+    margin: 4px auto 0 auto;
+    width: 88px;
+}
+
+.x42-mclk{{{cns}}} .mod-togglebutton.on {
+    background-position: top center !important;
+}
+
+
 .x42-mclk{{{cns}}} .mod-pushbutton {
     background-image:url(/resources/footswitch.png{{{ns}}});
     background-position:top center;
@@ -166,7 +234,7 @@
     height:31px;
     margin:20px auto 0 !important;
     position:relative;
-    width:190px;
+    width:150px;
     z-index:35;
 }
 
