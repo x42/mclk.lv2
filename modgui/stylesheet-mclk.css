@@ -30,14 +30,14 @@
     position:absolute;
     right:0;
     text-align:center;
-    bottom:115px;
+    bottom:137px;
 }
 
 .x42-mclk{{{cns}}} .x42-brand h1 {
     border: none;
     display:inline-block;
     font-family:"Nexa";
-    font-size:22px;
+    font-size:28px;
     padding:0;
     margin:0;
     text-shadow: -1px -1px 1px #aaa;
@@ -166,14 +166,6 @@
 }
 
 
-.x42-mclk{{{cns}}} .led-group {
-    margin:10px auto 0 auto;
-    left:10px;
-    right:10px;
-    position:absolute;
-    bottom:135px;
-}
-
 .x42-mclk{{{cns}}} .bottom-group {
     margin:10px auto 0 auto;
     left:10px;
@@ -212,20 +204,6 @@
 
 .x42-mclk{{{cns}}} .mod-pushbutton.on {
     background-position: bottom center !important;
-}
-
-
-.x42-mclk{{{cns}}} .mod-control-group .x42-led {
-    background-image:url(/resources/x42-led.png{{{ns}}});
-    background-position:left center ;
-    background-repeat:no-repeat;
-    background-size:48px 24px;
-    height:24px;
-    width:24px;
-    margin:0px auto 0 auto;
-    cursor:pointer !important;
-    position:relative;
-    overflow:hidden;
 }
 
 /* = ENUMERATED LIST
