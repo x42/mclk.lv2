@@ -95,10 +95,10 @@ typedef struct {
 	/* Host Time */
 	bool     host_info;
 	float    host_bpm;
-	float    bar_beats;
+	double   bar_beats;
 	float    host_speed;
 	int      host_div;
-	long int host_frame;
+	int64_t  host_frame;
 
 	/* Settings */
 	double sample_rate;
@@ -174,7 +174,7 @@ update_position (Mclk* self, const LV2_Atom_Object* obj)
 			&& frame && frame->type == uris->atom_Long)
 	{
 		float    _bpb   = ((LV2_Atom_Float*)bpb)->body;
-		long int _bar   = ((LV2_Atom_Long*)bar)->body;
+		int64_t  _bar   = ((LV2_Atom_Long*)bar)->body;
 		float    _beat  = ((LV2_Atom_Float*)beat)->body;
 
 		self->host_div   = ((LV2_Atom_Int*)bunit)->body;
@@ -184,6 +184,9 @@ update_position (Mclk* self, const LV2_Atom_Object* obj)
 
 		self->bar_beats  = _bar * _bpb + _beat * self->host_div / 4.0;
 		self->host_info  = true;
+		if (self->host_frame < 0) {
+			self->host_info  = false;
+		}
 	}
 }
 
