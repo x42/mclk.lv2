@@ -24,7 +24,7 @@ function (event) {
 	function handle_event (symbol, value) {
 		switch (symbol) {
 			case 'bbt_bar':
-				event.icon.find ('[mod-role=bbt_bar]').text (format_bbt (value, 4));
+				event.icon.find ('[mod-role=bbt_bar]').text (value);
 				break;
 			case 'bbt_beat':
 				event.icon.find ('[mod-role=bbt_beat]').text (format_bbt (value, 2));
