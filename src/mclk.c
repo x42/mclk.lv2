@@ -101,12 +101,12 @@ typedef struct {
 	long int host_frame;
 
 	/* Settings */
-	float sample_rate;
+	double sample_rate;
 	int mode;
 
 	/* State */
 	bool  rolling;
-	float bb;
+	double bb;
 	int64_t last_bcnt;
 	int64_t sample_pos;
 	double mclk_last_tick; // in audio-samples
@@ -253,16 +253,16 @@ send_rt_message (Mclk* self, uint32_t tme, uint8_t rt_msg)
  * is used to cover the complete range.
  */
 static const int64_t
-calc_song_pos (float bar_beat, float bpm, int off)
+calc_song_pos (const double bar_beat, double bpm, int off)
 {
 	const double resync_delay = 1.0; /**< seconds between 'pos' and 'continue' message */
 
   if (off < 0) {
     /* auto offset */
     if (bar_beat == 0) off = 0;
-    else off = rintf (bpm * 4.f * resync_delay / 60.f);
+    else off = rint (bpm * 4.0 * resync_delay / 60.0);
   }
-  return off + floor (4.f * bar_beat);
+  return off + floor (4.0 * bar_beat);
 }
 
 /* *****************************************************************************
@@ -385,8 +385,8 @@ run (LV2_Handle instance, uint32_t n_samples)
 	}
 
 	bool rolling;
-	float bpm;
-	float bb;
+	double bpm;
+	double bb;
 	double quarter_notes_per_beat = 1.0;
 	int64_t sample_position;
 
@@ -417,7 +417,7 @@ run (LV2_Handle instance, uint32_t n_samples)
 		if (self->host_speed < 0) {
 			goto noroll;
 		}
-		if (fabsf(self->bb - self->bar_beats) > 1) {
+		if (fabs(self->bb - self->bar_beats) > 1) {
 			/* located */
 			self->rolling = rolling = false;
 			self->bb = -1;
@@ -437,7 +437,7 @@ run (LV2_Handle instance, uint32_t n_samples)
 		}
 	}
 
-	const double samples_per_beat = (double) self->sample_rate * 60.0 / bpm;
+	const double samples_per_beat = self->sample_rate * 60.0 / bpm;
 	const double samples_per_quarter_note = samples_per_beat / quarter_notes_per_beat;
 	const double clock_tick_interval = samples_per_quarter_note / 24.0;
 
@@ -526,9 +526,9 @@ noroll:
 	if (self->host_info && *self->p_sync > 0) {
 		bpb = self->host_div;
 	}
-	*self->p_bbt[0] = 1.f + floor (bb / bpb);
+	*self->p_bbt[0] = 1.f + floor (bb / bpb); // limit to 4096 (song pos) ?
 	*self->p_bbt[1] = 1.f + ((int) floor (bb) % bpb);
-	*self->p_bbt[2] = floor (fmod (bb, 1.f) * 960.f);
+	*self->p_bbt[2] = floor (fmod (bb, 1.0) * 960.0);
 
 	/* keep track of host position.. */
 	if (self->host_info) {
@@ -541,7 +541,7 @@ noroll:
 		self->bb = self->bar_beats;
 		self->sample_pos = self->host_frame;
 	} else if (rolling) {
-		self->bb += n_samples * bpm / (60.f * self->sample_rate);
+		self->bb += n_samples * bpm / (60.0 * self->sample_rate);
 		self->sample_pos += n_samples;
 	}
 }
