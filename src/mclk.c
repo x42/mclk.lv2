@@ -535,7 +535,7 @@ noroll:
 
 	/* keep track of host position.. */
 	if (self->host_info) {
-		self->bar_beats += n_samples * self->host_bpm * self->host_speed / (60.f * self->sample_rate);
+		self->bar_beats += n_samples * self->host_bpm * self->host_speed / (60.0 * self->sample_rate);
 		self->host_frame += n_samples * self->host_speed;
 	}
 
