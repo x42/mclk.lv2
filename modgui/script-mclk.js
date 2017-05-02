@@ -12,9 +12,13 @@ function (event) {
 	function set_hostbpm (hostbpm) {
 		if (isNaN (hostbpm)) { return; }
 		if (hostbpm <= 0) {
+			event.icon.find("[mod-role=led-display]").each(function () { $(this).addClass("insensitive"); });
+			event.icon.find("[mod-role=led-control]").each(function () { $(this).removeClass("insensitive"); });
 			event.icon.find("[mod-role=bpm-display]").each(function () { $(this).addClass("insensitive"); });
 			event.icon.find("[mod-role=bpm-control]").each(function () { $(this).removeClass("insensitive"); });
 		} else {
+			event.icon.find("[mod-role=led-control]").each(function () { $(this).addClass("insensitive"); });
+			event.icon.find("[mod-role=led-display]").each(function () { $(this).removeClass("insensitive"); });
 			event.icon.find("[mod-role=bpm-control]").each(function () { $(this).addClass("insensitive"); });
 			event.icon.find("[mod-role=bpm-display]").each(function () { $(this).removeClass("insensitive"); });
 			event.icon.find("[mod-role=bpm-value]").text (format_bpm (hostbpm) + " BPM");
