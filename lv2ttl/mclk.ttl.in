@@ -43,8 +43,8 @@
 		atom:bufferType atom:Sequence;
 		atom:supports midi:MidiEvent;
 		lv2:index 1;
-		lv2:symbol "midiout";
-		lv2:name "MIDI Out";
+		lv2:symbol "mclk";
+		lv2:name "Midi Clock Out";
 	] , [
 		a lv2:InputPort, lv2:ControlPort;
 		lv2:index 2;
