@@ -9,6 +9,7 @@ PREFIX ?= /usr/local
 CFLAGS ?= $(OPTIMIZATIONS) -Wall
 LIBDIR ?= lib
 
+PKG_CONFIG ?= pkg-config
 STRIP?=strip
 STRIPFLAGS?=-s
 
@@ -61,17 +62,17 @@ LV2VERSION=$(mclk_VERSION)
 include git2lv2.mk
 
 # check for build-dependencies
-ifeq ($(shell pkg-config --exists lv2 || echo no), no)
+ifeq ($(shell $(PKG_CONFIG) --exists lv2 || echo no), no)
   $(error "LV2 SDK was not found")
 endif
 
 # check for lv2_atom_forge_object  new in 1.8.1 deprecates lv2_atom_forge_blank
-ifeq ($(shell pkg-config --atleast-version=1.8.1 lv2 && echo yes), yes)
+ifeq ($(shell $(PKG_CONFIG) --atleast-version=1.8.1 lv2 && echo yes), yes)
   override CFLAGS += -DHAVE_LV2_1_8
 endif
 
 override CFLAGS += -fPIC -std=c99
-override CFLAGS += `pkg-config --cflags lv2`
+override CFLAGS += `$(PKG_CONFIG) --cflags lv2`
 
 # build target definitions
 default: all
@@ -92,7 +93,7 @@ endif
 
 $(BUILDDIR)$(LV2NAME).ttl: lv2ttl/$(LV2NAME).ttl.in
 	@mkdir -p $(BUILDDIR)
-	sed "s/@LV2NAME@/$(LV2NAME)/;s/@SIGNATURE@/$(SIGNATURE)/;s/@VERSION@/lv2:microVersion $(LV2MIC) ;lv2:minorVersion $(LV2MIN) ;/g;s/@MODBRAND@/$(MODBRAND)/;s/@MODLABEL@/$(MODLABEL)/" \
+	sed "s/@LV2NAME@/$(LV2NAME)/;s/@SIGNATURE@//;s/@VERSION@/lv2:microVersion $(LV2MIC) ;lv2:minorVersion $(LV2MIN) ;/g;s/@MODBRAND@/$(MODBRAND)/;s/@MODLABEL@/$(MODLABEL)/" \
 		lv2ttl/$(LV2NAME).ttl.in > $(BUILDDIR)$(LV2NAME).ttl
 
 $(BUILDDIR)$(LV2NAME)$(LIB_EXT): src/$(LV2NAME).c
